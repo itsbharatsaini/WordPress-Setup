@@ -65,15 +65,21 @@ OR
 ```sh
 sudo systemctl reload apache2
 ```
+14. Give Permisson for www-data User and Group to wordpress Dir.
+```sh
+find /var/www/html/wordpress/ -type d -exec chmod 755 {} \;
+find /var/www/html/wordpress/ -type f -exec chmod 644 {} \;
+sudo chown -R www-data:www-data /var/www/html/wordpress
+```
 
-14. Update root path URL ( Optional : If you want to update wordpress root URL )
+15. Update root path URL ( Optional : If you want to update wordpress root URL )
 
 ```sh
 sudo nano /etc/apache2/sites-available/000-default.conf
 ```
 > Note : Replace `DocumentRoot /var/www/html` with `DocumentRoot /var/www/html/wordpress`.
 
-15. Add Domain to server 
+16. Add Domain to server 
 >Note : Replace <domain.com> with your domain and Add these lines to 000-default.conf.
 ```sh
 ServerName domain.com
@@ -91,12 +97,12 @@ Also Update in WP_Website
 WordPress Address (URL) : http://<domain.com>
 Site Address (URL) : http://<domain.com>
 ```
-16. Install certbot
+17. Install certbot
 ```sh
 sudo apt-get update
 sudo apt install certbot python3-certbot-apache
 ```
-17. Request and install ssl on your site with certbot
+18. Request and install ssl on your site with certbot
 ```sh
 sudo certbot --apache
 ```
