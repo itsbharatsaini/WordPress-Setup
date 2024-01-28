@@ -1,3 +1,4 @@
+#### WordPress Setup for Linux
 1. Updates the package index files
 ```sh
 sudo apt-get update
@@ -64,12 +65,38 @@ OR
 ```sh
 sudo systemctl reload apache2
 ```
-14. Install certbot
+
+14. Update root path URL ( Optional : If you want to update wordpress root URL )
+
+```sh
+sudo nano /etc/apache2/sites-available/000-default.conf
+```
+> Note : Replace `DocumentRoot /var/www/html` with `DocumentRoot /var/www/html/wordpress`.
+
+15. Add Domain to server 
+>Note : Replace <domain.com> with your domain and Add these lines to 000-default.conf.
+```sh
+ServerName domain.com
+ServerAlias www.domain.com
+```
+
+```sh
+sudo systemctl restart apache2
+```
+
+Also Update in WP_Website
+> http://<domain.com>/wp-admin/options-general.php
+
+```sh
+WordPress Address (URL) : http://<domain.com>
+Site Address (URL) : http://<domain.com>
+```
+16. Install certbot
 ```sh
 sudo apt-get update
 sudo apt install certbot python3-certbot-apache
 ```
-15. Request and install ssl on your site with certbot
+17. Request and install ssl on your site with certbot
 ```sh
 sudo certbot --apache
 ```
