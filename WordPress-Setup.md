@@ -38,6 +38,7 @@ CREATE DATABASE DB_NAME;
 ```
 
 9. Grant all privilges on the database 'wp' to the newly created user
+> Note: Change `DB_NAME` and `DB_USER`.
 ```sh
 GRANT ALL PRIVILEGES ON DB_NAME.* TO 'DB_USER'@localhost;
 ```
@@ -58,7 +59,9 @@ sudo mv wordpress/ /var/www/html
 13. Command to restart/reload apache server
 ```sh
 sudo systemctl restart apache2
+```
 OR
+```sh
 sudo systemctl reload apache2
 ```
 14. Install certbot
