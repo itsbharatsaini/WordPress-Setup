@@ -20,24 +20,26 @@ sudo apt install mysql-server
 ```sh
 sudo mysql -u root
 ```
-6. Change authentication plugin to mysql_native_password (change the password to something strong)
+6. Change authentication plugin to mysql_native_password.
+> Note: Change strong `ROOT_PASSWORD` password.
 ```sh
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password by 'Testpassword@123';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password by 'ROOT_PASSWORD';
 ```
 7. Create a new database user for wordpress (change the password to something strong)
-
+> Note: Change `DB_USER` and `DB_PASSWORD`.
 ```sh
-CREATE USER 'DB_USER'@localhost IDENTIFIED BY 'Testpassword@123'
+CREATE USER 'DB_USER'@localhost IDENTIFIED BY 'DB_PASSWORD'
 ```
 
 8. Create a database for wordpress
+> Note: Change `DB_NAME`.
 ```sh
-CREATE DATABASE EB_NAME;
+CREATE DATABASE DB_NAME;
 ```
 
 9. Grant all privilges on the database 'wp' to the newly created user
 ```sh
-GRANT ALL PRIVILEGES ON wp.* TO 'wp_user'@localhost;
+GRANT ALL PRIVILEGES ON DB_NAME.* TO 'DB_USER'@localhost;
 ```
 10. Download wordpress
 ```sh
